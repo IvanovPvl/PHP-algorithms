@@ -8,6 +8,7 @@ namespace Alg;
  */
 class Stack
 {
+    /** @var array */
     private $elements = [];
 
     /**
