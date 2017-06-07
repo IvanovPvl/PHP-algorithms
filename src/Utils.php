@@ -48,6 +48,39 @@ class Utils
     }
 
     /**
+     * Convert to 2 base.
+     *
+     * @param $number
+     * @return string
+     */
+    public static function divideBy2($number)
+    {
+        return self::baseConverter($number, 2);
+    }
+
+    /**
+     * Convert to 8 base.
+     *
+     * @param $number
+     * @return string
+     */
+    public static function divideBy8($number)
+    {
+        return self::baseConverter($number, 8);
+    }
+
+    /**
+     * Convert to 16 base.
+     *
+     * @param $number
+     * @return string
+     */
+    public static function divideBy16($number)
+    {
+        return self::baseConverter($number, 16);
+    }
+
+    /**
      * Convert to base.
      *
      * @param $number
@@ -55,7 +88,7 @@ class Utils
      * @return string
      * @throws Exception
      */
-    public function baseConverter($number, $base)
+    private function baseConverter($number, $base)
     {
         if ($base > 16) {
             throw new Exception('Base must be less or equal than 16.');
@@ -75,17 +108,6 @@ class Utils
         }
 
         return $s;
-    }
-
-    /**
-     * Convert to 2 base.
-     *
-     * @param $number
-     * @return string
-     */
-    public static function divideBy2($number)
-    {
-        return self::baseConverter($number, 2);
     }
 
     private static function matches($open, $close)

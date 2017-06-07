@@ -54,4 +54,20 @@ class StackTest extends TestCase
     {
         Assert::assertEquals('1010', Utils::divideBy2(10));
     }
+
+    /**
+     * @test
+     */
+    public function divideBy8()
+    {
+        Assert::assertEquals('351', Utils::divideBy8(233));
+    }
+
+    /**
+     * @test
+     */
+    public function divideBy16()
+    {
+        Assert::assertEquals('E9', Utils::divideBy16(233));
+    }
 }
