@@ -2,6 +2,8 @@
 
 namespace Alg;
 
+use Exception;
+
 /**
  * Class Utils
  * @package Alg
@@ -46,25 +48,44 @@ class Utils
     }
 
     /**
-     * Divide by 2.
+     * Convert to base.
+     *
+     * @param $number
+     * @param $base
+     * @return string
+     * @throws Exception
+     */
+    public function baseConverter($number, $base)
+    {
+        if ($base > 16) {
+            throw new Exception('Base must be less or equal than 16.');
+        }
+
+        $digits = '0123456789ABCDEF';
+
+        $stack = new Stack();
+        while ($number > 0) {
+            $stack->push($number % $base);
+            $number = intdiv($number, $base);
+        }
+
+        $s = '';
+        while ($stack->size()) {
+            $s .= $digits[$stack->pop()];
+        }
+
+        return $s;
+    }
+
+    /**
+     * Convert to 2 base.
      *
      * @param $number
      * @return string
      */
     public static function divideBy2($number)
     {
-        $stack = new Stack();
-        while ($number > 0) {
-            $stack->push($number % 2);
-            $number = intdiv($number, 2);
-        }
-
-        $s = '';
-        while ($stack->size()) {
-            $s .= $stack->pop();
-        }
-
-        return $s;
+        return self::baseConverter($number, 2);
     }
 
     private static function matches($open, $close)
