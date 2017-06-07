@@ -46,4 +46,12 @@ class StackTest extends TestCase
         Assert::assertTrue(Utils::parChecker('[{()}]'));
         Assert::assertFalse(Utils::parChecker('[{()]]'));
     }
+
+    /**
+     * @test
+     */
+    public function divideBy2()
+    {
+        Assert::assertEquals('1010', Utils::divideBy2(10));
+    }
 }

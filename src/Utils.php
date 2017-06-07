@@ -45,6 +45,28 @@ class Utils
         return false;
     }
 
+    /**
+     * Divide by 2.
+     *
+     * @param $number
+     * @return string
+     */
+    public static function divideBy2($number)
+    {
+        $stack = new Stack();
+        while ($number > 0) {
+            $stack->push($number % 2);
+            $number = intdiv($number, 2);
+        }
+
+        $s = '';
+        while ($stack->size()) {
+            $s .= $stack->pop();
+        }
+
+        return $s;
+    }
+
     private static function matches($open, $close)
     {
         $opens = '([{';
