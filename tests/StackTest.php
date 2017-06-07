@@ -7,14 +7,17 @@ use PHPUnit\Framework\ {
     TestCase
 };
 
-use Alg\Stack;
+use Alg\ {
+    Stack,
+    Utils
+};
 
 class StackTest extends TestCase
 {
     /**
      * @test
      */
-    public function emptyStack()
+    public function stack()
     {
         $stack = new Stack();
         Assert::assertTrue($stack->isEmpty());
@@ -30,5 +33,15 @@ class StackTest extends TestCase
         Assert::assertEquals($item, $stack->pop());
         Assert::assertTrue($stack->isEmpty());
         Assert::assertEquals(0, $stack->size());
+    }
+
+    /**
+     * @test
+     */
+    public function parChecker()
+    {
+        Assert::assertTrue(Utils::parChecker('((()))'));
+        Assert::assertFalse(Utils::parChecker(')))((('));
+        Assert::assertFalse(Utils::parChecker('((())'));
     }
 }
