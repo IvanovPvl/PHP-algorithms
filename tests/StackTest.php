@@ -43,5 +43,7 @@ class StackTest extends TestCase
         Assert::assertTrue(Utils::parChecker('((()))'));
         Assert::assertFalse(Utils::parChecker(')))((('));
         Assert::assertFalse(Utils::parChecker('((())'));
+        Assert::assertTrue(Utils::parChecker('[{()}]'));
+        Assert::assertFalse(Utils::parChecker('[{()]]'));
     }
 }

@@ -22,13 +22,16 @@ class Utils
         $index = 0;
         while ($index < strlen($str) && $balanced) {
             $symbol = $str[$index];
-            if ($symbol == '(') {
+            if (strpos('([{', $symbol) !== false) {
                 $stack->push($symbol);
             } else {
                 if ($stack->isEmpty()) {
                     $balanced = false;
                 } else {
-                    $stack->pop();
+                    $top = $stack->pop();
+                    if (!self::matches($top, $symbol)) {
+                        $balanced = false;
+                    }
                 }
             }
 
@@ -40,5 +43,13 @@ class Utils
         }
 
         return false;
+    }
+
+    private static function matches($open, $close)
+    {
+        $opens = '([{';
+        $closers = ')]}';
+        return strpos($opens, $open) === strpos($closers, $close) && strpos($opens, $open) !== false
+            && strpos($closers, $close) !== false;
     }
 }
