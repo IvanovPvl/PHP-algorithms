@@ -16,7 +16,7 @@ class Recursion
             return 0;
         }
 
-        return array_shift($list) + self::sum($list);
+        return $list[0] + self::sum(array_slice($list, 1));
     }
 
     /**
@@ -31,8 +31,7 @@ class Recursion
             return 0;
         }
 
-        array_shift($list);
-        return 1 + self::count($list);
+        return 1 + self::count(array_slice($list, 1));
     }
 
     /**
@@ -48,7 +47,28 @@ class Recursion
             return $max;
         }
 
-        $tmp = max($max, array_shift($list));
-        return self::max($list, $tmp);
+        $tmp = max($max, $list[0]);
+        return self::max(array_slice($list, 1), $tmp);
+    }
+
+    public static function exists(array $list, int $element): bool
+    {
+        if (count($list) == 1) {
+            return $list[0] == $element;
+        }
+
+        $low = 0;
+        $high = count($list) - 1;
+        $mid = intdiv($low + $high, 2);
+        $guess = $list[$mid];
+        if ($guess == $element) {
+            return true;
+        }
+
+        if ($guess > $element) {
+            return self::exists(array_slice($list, $low, $mid - 1), $element);
+        }
+
+        return self::exists(array_slice($list, $mid + 1), $element);
     }
 }

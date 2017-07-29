@@ -37,4 +37,14 @@ class RecursionTest extends TestCase
         $list = [1, 2, 3, 10, 4, 5, 6];
         Assert::assertEquals(10, Recursion::max($list));
     }
+
+    /**
+     * @test
+     */
+    public function exists()
+    {
+        $list = [1, 2, 3, 4, 5, 6, 9, 20, 30];
+        Assert::assertTrue(Recursion::exists($list, 9));
+        Assert::assertFalse(Recursion::exists($list, 1));
+    }
 }
