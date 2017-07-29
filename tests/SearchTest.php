@@ -2,9 +2,12 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\{
+    Assert,
+    TestCase
+};
+
 use Alg\Search;
-use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
 
 class SearchTest extends TestCase
 {

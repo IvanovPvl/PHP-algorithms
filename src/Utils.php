@@ -81,6 +81,17 @@ class Utils
     }
 
     /**
+     * Get index of min value in array.
+     *
+     * @param array $list
+     * @return int
+     */
+    public static function smallest(array $list): int
+    {
+        return array_search(min($list), $list);
+    }
+
+    /**
      * Convert to base.
      *
      * @param $number
